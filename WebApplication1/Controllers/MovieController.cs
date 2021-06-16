@@ -16,5 +16,20 @@ namespace WebApplication1.Controllers
             // return View(movie);
             return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
+        public ActionResult Edit(int id) {
+            return Content("id=" + id); 
+        }
+        public ActionResult Index(int? page, string sortBy) {
+            if (!page.HasValue)
+            {
+                page= 1;
+            }
+            if (String.IsNullOrWhiteSpace(sortBy))
+            {
+                sortBy = "Name";
+            }
+            return Content(String.Format("pageIndex={0}&sortBy={1}", page,sortBy));
+
+        }
     }
 }

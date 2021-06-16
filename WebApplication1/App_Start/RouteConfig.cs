@@ -18,11 +18,7 @@ namespace WebApplication1
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Default",
-                url: "{MovieController}/{Random}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+
         }
     }
 }
