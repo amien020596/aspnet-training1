@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -12,9 +13,16 @@ namespace WebApplication1.Controllers
         // GET: Movie
         public ActionResult Random()
         {
-            var movie = new Movie() { Name = "Shrek!" };
-            // return View(movie);
-            return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+            var movies = new Movie() { Name = "Shrek!" };
+            var customers = new List <Customer> { 
+                new Customer {Name = "Amien Kurniawan"},
+                new Customer {Name = "Amri Luthfi"}
+            };
+            var viewModel = new RandomMovieViewModel {
+                Movie = movies,
+                Customers = customers
+            };
+            return View(viewModel);
         }
         public ActionResult Edit(int id) {
             return Content("id=" + id); 
