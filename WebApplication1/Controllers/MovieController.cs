@@ -7,7 +7,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class MovieController : Controller
+    public class MoviesController : Controller
     {
         // GET: Movie
         public ActionResult Random()
@@ -19,6 +19,7 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id) {
             return Content("id=" + id); 
         }
+        // to make optional parameter using int?
         public ActionResult Index(int? page, string sortBy) {
             if (!page.HasValue)
             {
@@ -30,6 +31,9 @@ namespace WebApplication1.Controllers
             }
             return Content(String.Format("pageIndex={0}&sortBy={1}", page,sortBy));
 
+        }
+        public ActionResult ByReleaseDate(int year, int month) {
+            return Content(year+"/"+month);
         }
     }
 }

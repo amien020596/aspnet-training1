@@ -12,7 +12,12 @@ namespace WebApplication1
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                name: "MoviewyReleaseData",
+                url: "movies/released/{year}/{month}",
+                defaults: new { controller = "Movies", action = "ByReleaseDate"},
+                new {year = @"2015|2016", month= @"\d{2}" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
